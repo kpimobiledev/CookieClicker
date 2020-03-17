@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Cookie Clicker</string>
+    <string name="rules">Click at the cookie!</string>
+    <string name="clicked">You clicked</string>
+    <string name="start">Start</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="insane">Insane</string>
+    <string name="unbelievable">Unbelievable</string>
+    <string name="cookie_god">Cookie god</string>
+    <string name="rank">Rank</string>
+    <string name="going_steady">Going steady</string>
+    <string name="cookie">Cookie</string>
+    <string name="share">Share</string>
+    <string name="stats">I am %s! I clicked the cookie %d times!</string>
+</resources>
