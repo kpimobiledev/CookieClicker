@@ -25,13 +25,12 @@ class MainActivity : AppCompatActivity() {
             increaseScore()
         }
 
-        timer = Timer()
+        timer = Timer(lifecycle)
     }
 
     override fun onStart() {
         super.onStart()
         Log.i(TAG, "onStart called")
-        timer.start()
     }
 
     override fun onResume() {
@@ -47,7 +46,6 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         Log.i(TAG, "onStop called")
-        timer.stop()
     }
 
     override fun onDestroy() {
