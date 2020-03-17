@@ -3,6 +3,7 @@ package com.lidaamber.cookieclicker
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.core.app.ShareCompat
@@ -16,11 +17,37 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i(TAG, "onCreate called")
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.gameInfo = gameInfo
         binding.cookieImage.setOnClickListener {
             increaseScore()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i(TAG, "onStart called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i(TAG, "onResume called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i(TAG, "onPause called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i(TAG, "onStop called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i(TAG, "onDestroy called")
     }
 
     private fun increaseScore() {
@@ -45,5 +72,9 @@ class MainActivity : AppCompatActivity() {
                 .setText(getString(R.string.stats, getString(gameInfo.rank), gameInfo.score))
                 .setType("text/plain")
                 .intent
+    }
+
+    companion object {
+        const val TAG = "MainActivity"
     }
 }
