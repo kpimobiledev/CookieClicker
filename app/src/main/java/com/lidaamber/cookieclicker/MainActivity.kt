@@ -26,6 +26,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         timer = Timer(lifecycle)
+        savedInstanceState?.let {
+            timer.value = it.getInt(TIMER_VALUE)
+            gameInfo.score = it.getInt(SCORE)
+            gameInfo.rank = it.getInt(RANK)
+            binding.invalidateAll()
+        }
+    }
+
+    private fun increaseScore() {
+        gameInfo.score += 1
+        binding.invalidateAll()
     }
 
     override fun onStart() {
@@ -48,14 +59,16 @@ class MainActivity : AppCompatActivity() {
         Log.i(TAG, "onStop called")
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putInt(TIMER_VALUE, timer.value)
+        outState?.putInt(SCORE, gameInfo.score)
+        outState?.putInt(RANK, gameInfo.rank)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         Log.i(TAG, "onDestroy called")
-    }
-
-    private fun increaseScore() {
-        gameInfo.score += 1
-        binding.invalidateAll()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -79,5 +92,9 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val TAG = "MainActivity"
+
+        const val TIMER_VALUE = "timerValue"
+        const val SCORE = "score"
+        const val RANK = "rank"
     }
 }
