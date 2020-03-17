@@ -12,6 +12,7 @@ import com.lidaamber.cookieclicker.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var timer: Timer
     private lateinit var binding: ActivityMainBinding
     private var gameInfo = GameInfo()
 
@@ -23,11 +24,14 @@ class MainActivity : AppCompatActivity() {
         binding.cookieImage.setOnClickListener {
             increaseScore()
         }
+
+        timer = Timer()
     }
 
     override fun onStart() {
         super.onStart()
         Log.i(TAG, "onStart called")
+        timer.start()
     }
 
     override fun onResume() {
@@ -43,6 +47,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         Log.i(TAG, "onStop called")
+        timer.stop()
     }
 
     override fun onDestroy() {
